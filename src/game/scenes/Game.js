@@ -8,9 +8,13 @@ export class Game extends Scene {
   create() {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("32x32-tile");
-    map.createLayer("Tile Layer 1", tileset, 21, 21);
+
+    const platforms = map.createLayer("Tile Layer 1", tileset, 21, 21);
+    platforms.setCollisionByExclusion(-1, true);
 
     const player = this.physics.add.sprite(100, 50, "cat").setScale(0.2);
     player.setCollideWorldBounds(true);
+
+    this.physics.add.collider(player, platforms);
   }
 }
