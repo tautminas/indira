@@ -12,9 +12,23 @@ export class Game extends Scene {
     const platforms = map.createLayer("Tile Layer 1", tileset, 21, 21);
     platforms.setCollisionByExclusion(-1, true);
 
-    const player = this.physics.add.sprite(100, 50, "cat").setScale(0.2);
-    player.setCollideWorldBounds(true);
+    this.player = this.physics.add.sprite(100, 50, "cat").setScale(0.15);
+    this.player.setCollideWorldBounds(true);
+    this.physics.add.collider(this.player, platforms);
 
-    this.physics.add.collider(player, platforms);
+    this.playerSpeed = 200;
+
+    this.cursors = this.input.keyboard.createCursorKeys();
+  }
+
+  update() {
+    const { left, right } = this.cursors;
+    if (left.isDown) {
+      this.player.setVelocityX(-this.playerSpeed);
+    } else if (right.isDown) {
+      this.player.setVelocityX(this.playerSpeed);
+    } else {
+      this.player.setVelocityX(0);
+    }
   }
 }
