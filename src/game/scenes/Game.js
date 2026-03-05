@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import Player from "../entities/Player";
 
 export class Game extends Scene {
   constructor() {
@@ -12,7 +13,8 @@ export class Game extends Scene {
     const platforms = map.createLayer("Tile Layer 1", tileset, 21, 21);
     platforms.setCollisionByExclusion(-1, true);
 
-    this.player = this.physics.add.sprite(100, 50, "cat").setScale(0.15);
+    this.player = new Player(this, 100, 50).setScale(0.15);
+    // this.player = this.physics.add.sprite(100, 50, "cat").setScale(0.15);
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, platforms);
 
