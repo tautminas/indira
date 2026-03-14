@@ -20,6 +20,11 @@ export class Preloader extends Scene {
     this.load.image("32x32-tile", "32x32-tile.png");
     this.load.tilemapTiledJSON("map", "map.tmj");
     this.load.image("cat", "cat.png");
+    this.load.spritesheet("player", "player.png", {
+      frameWidth: 687,
+      frameHeight: 492,
+      spacing: 0,
+    });
   }
 
   create() {
