@@ -12,4 +12,18 @@ export default (anims) => {
     frameRate: 2,
     repeat: -1,
   });
+
+  anims.create({
+    key: "jump",
+    frames: anims.generateFrameNumbers("player", { start: 4, end: 5 }),
+    frameRate: 2,
+    repeat: -1,
+  });
+
+  anims.create({
+    key: "die",
+    frames: anims.generateFrameNumbers("player", { start: 6, end: 7 }),
+    frameRate: 2,
+    repeat: 1,
+  });
 };
