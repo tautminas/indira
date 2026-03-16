@@ -14,7 +14,8 @@ export class Game extends Scene {
     platforms.setCollisionByExclusion(-1, true);
 
     const player = this.createPlayer();
-    this.physics.add.collider(player, platforms);
+    // this.physics.add.collider(player, platforms);
+    player.addCollider(platforms);
   }
 
   createPlayer() {
