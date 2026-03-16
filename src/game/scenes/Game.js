@@ -15,10 +15,19 @@ export class Game extends Scene {
 
     const player = this.createPlayer();
     // this.physics.add.collider(player, platforms);
-    player.addCollider(platforms);
+    // player.addCollider(platforms);
+    this.createPlayerColliders(player, {
+      colliders: {
+        platformsColliders: platforms,
+      },
+    });
   }
 
   createPlayer() {
     return new Player(this, 100, 50).setScale(0.15);
+  }
+
+  createPlayerColliders(player, { colliders }) {
+    player.addCollider(colliders.platformsColliders);
   }
 }
