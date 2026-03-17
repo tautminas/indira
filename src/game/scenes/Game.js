@@ -21,6 +21,8 @@ export class Game extends Scene {
         platformsColliders: platforms,
       },
     });
+
+    this.setupFollowupCameraOn(player);
   }
 
   createPlayer() {
@@ -29,5 +31,18 @@ export class Game extends Scene {
 
   createPlayerColliders(player, { colliders }) {
     player.addCollider(colliders.platformsColliders);
+  }
+
+  setupFollowupCameraOn(player) {
+    const height = this.game.config.height;
+    const width = this.game.config.width;
+    const mapWidth = 3200;
+    const mapOffset = mapWidth > width ? mapWidth - width : 0;
+    const zoomFactor = 1;
+    this.physics.world.setBounds(0, 0, width + mapOffset, height + 200);
+    this.cameras.main
+      .setBounds(0, 0, width + mapOffset, height)
+      .setZoom(zoomFactor);
+    this.cameras.main.startFollow(player);
   }
 }
