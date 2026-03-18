@@ -10,10 +10,12 @@ export class Game extends Scene {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("32x32-tile");
 
-    const platforms = map.createLayer("Tile Layer 1", tileset, 21, 21);
+    const platforms = map.createLayer("platforms", tileset, 21, 21);
+    const playerZonesLayer = map.getObjectLayer("player_zones");
+    const playerZones = this.getPlayerZones(playerZonesLayer);
     platforms.setCollisionByExclusion(-1, true);
 
-    const player = this.createPlayer();
+    const player = this.createPlayer(playerZones.start);
     // this.physics.add.collider(player, platforms);
     // player.addCollider(platforms);
     this.createPlayerColliders(player, {
@@ -22,11 +24,12 @@ export class Game extends Scene {
       },
     });
 
+    this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
   }
 
-  createPlayer() {
-    return new Player(this, 100, 50).setScale(0.15);
+  createPlayer(start) {
+    return new Player(this, start.x, start.y).setScale(0.15);
   }
 
   createPlayerColliders(player, { colliders }) {
@@ -44,5 +47,26 @@ export class Game extends Scene {
       .setBounds(0, 0, width + mapOffset, height)
       .setZoom(zoomFactor);
     this.cameras.main.startFollow(player);
+  }
+
+  getPlayerZones(playerZonesLayer) {
+    const playerZones = playerZonesLayer.objects;
+    return {
+      start: playerZones.find((zone) => zone.name === "startZone"),
+      end: playerZones.find((zone) => zone.name === "endZone"),
+    };
+  }
+
+  createEndOfLevel(end, player) {
+    const endOfLevel = this.physics.add
+      .sprite(end.x, end.y, "end")
+      .setAlpha(0)
+      .setSize(5, 200)
+      .setOrigin(0.5, 1);
+
+    const eolOverlap = this.physics.add.overlap(player, endOfLevel, () => {
+      eolOverlap.active = false;
+      console.log("Payer has won!");
+    });
   }
 }
