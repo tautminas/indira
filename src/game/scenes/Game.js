@@ -9,44 +9,19 @@ export class Game extends Scene {
   create() {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("tileset");
-
     const platforms = map.createLayer("platforms", tileset, 0, 0);
+    const dropTrap = map.createLayer("drop", tileset, 0, 0);
+    const spikesTrap = map.createLayer("spikes", tileset, 0, 0);
     const playerZonesLayer = map.getObjectLayer("player_zones");
     const playerZones = this.getPlayerZones(playerZonesLayer);
     platforms.setCollisionByExclusion(-1, true);
-
-    const trigger1 = map.getObjectLayer("trigger1").objects[0];
-    const trap1 = map.createLayer("trap1", tileset, 0, 0);
-    console.log(
-      "Trigger 1:",
-      trigger1.x,
-      trigger1.y,
-      trigger1.width,
-      trigger1.height,
-    );
-    const trap1Sprite = this.physics.add
-      .sprite(
-        trigger1.x + trigger1.width,
-        trigger1.y + trigger1.height,
-        "trap1",
-      )
-      .setOrigin(1, 1)
-      .setAlpha(0);
-    trap1Sprite.setDisplaySize(trigger1.width, trigger1.height);
-
     const player = this.createPlayer(playerZones.start);
-    const trap1Overlap = this.physics.add.overlap(player, trap1Sprite, () => {
-      trap1Overlap.active = false;
-      console.log("Player triggered trap 1!");
-    });
-    // this.physics.add.collider(player, platforms);
-    // player.addCollider(platforms);
+    this.createTriggers(map, player);
     this.createPlayerColliders(player, {
       colliders: {
         platformsColliders: platforms,
       },
     });
-
     this.createEndOfLevel(playerZones.end, player);
     this.setupFollowupCameraOn(player);
   }
@@ -91,5 +66,37 @@ export class Game extends Scene {
       eolOverlap.active = false;
       console.log("Payer has won!");
     });
+  }
+
+  createTriggers(map, player) {
+    const triggers = map.getObjectLayer("triggers").objects;
+    triggers.forEach((obj) => this.createTrigger(obj, player));
+  }
+
+  createTrigger(obj, player) {
+    console.log("Trigger:", obj.name, obj.x, obj.y, obj.width, obj.height);
+
+    const triggerSprite = this.physics.add
+      .sprite(obj.x + obj.width, obj.y + obj.height, "drop")
+      .setOrigin(1, 1)
+      .setAlpha(0);
+
+    triggerSprite.setDisplaySize(obj.width, obj.height);
+
+    this.physics.add.overlap(player, triggerSprite, () => {
+      this.handleTrigger(obj.name);
+      triggerSprite.destroy();
+    });
+  }
+
+  handleTrigger(name) {
+    switch (name) {
+      case "dropTrigger":
+        console.log("Player triggered drop trap!");
+        break;
+      case "spikesTrigger":
+        console.log("Player triggered spikes trap!");
+        break;
+    }
   }
 }
