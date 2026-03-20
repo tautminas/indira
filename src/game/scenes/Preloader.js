@@ -17,7 +17,7 @@ export class Preloader extends Scene {
   preload() {
     this.load.setPath("assets");
     this.load.image("logo", "logo.png");
-    this.load.image("32x32-tile", "32x32-tile.png");
+    this.load.image("tileset", "tileset.png");
     this.load.tilemapTiledJSON("map", "map.tmj");
     this.load.image("cat", "cat.png");
     this.load.spritesheet("player", "player.png", {

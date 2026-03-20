@@ -8,7 +8,7 @@ export class Game extends Scene {
 
   create() {
     const map = this.make.tilemap({ key: "map" });
-    const tileset = map.addTilesetImage("32x32-tile");
+    const tileset = map.addTilesetImage("tileset");
 
     const platforms = map.createLayer("platforms", tileset, 0, 0);
     const playerZonesLayer = map.getObjectLayer("player_zones");
