@@ -10,19 +10,19 @@ export class Game extends Scene {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("tileset");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
-    const dropTrap = map.createLayer("drop", tileset, 0, 0);
-    const spikesTrap = map.createLayer("spikes", tileset, 0, 0);
-    const holeTrap = map.createLayer("hole", tileset, 0, 0);
-    const platformTrap = map.createLayer("platform", tileset, 0, 0);
-    const separation1Trap = map.createLayer("separation1", tileset, 0, 0);
-    const separation2Trap = map.createLayer("separation2", tileset, 0, 0);
-    const dropdown1Trap = map.createLayer("dropdown1", tileset, 0, 0);
-    const dropdown2Trap = map.createLayer("dropdown2", tileset, 0, 0);
-    const dropdown3Trap = map.createLayer("dropdown3", tileset, 0, 0);
-    const falldown1Trap = map.createLayer("falldown1", tileset, 0, 0);
-    const falldown2Trap = map.createLayer("falldown2", tileset, 0, 0);
-    const falldown3Trap = map.createLayer("falldown3", tileset, 0, 0);
-    const skyrocketTrap = map.createLayer("skyrocket", tileset, 0, 0);
+    this.dropTrap = map.createLayer("drop", tileset, 0, 0);
+    this.spikesTrap = map.createLayer("spikes", tileset, 0, 0);
+    this.holeTrap = map.createLayer("hole", tileset, 0, 0);
+    this.platformTrap = map.createLayer("platform", tileset, 0, 0);
+    this.separation1Trap = map.createLayer("separation1", tileset, 0, 0);
+    this.separation2Trap = map.createLayer("separation2", tileset, 0, 0);
+    this.dropdown1Trap = map.createLayer("dropdown1", tileset, 0, 0);
+    this.dropdown2Trap = map.createLayer("dropdown2", tileset, 0, 0);
+    this.dropdown3Trap = map.createLayer("dropdown3", tileset, 0, 0);
+    this.falldown1Trap = map.createLayer("falldown1", tileset, 0, 0);
+    this.falldown2Trap = map.createLayer("falldown2", tileset, 0, 0);
+    this.falldown3Trap = map.createLayer("falldown3", tileset, 0, 0);
+    this.skyrocketTrap = map.createLayer("skyrocket", tileset, 0, 0);
     const playerZonesLayer = map.getObjectLayer("player_zones");
     const playerZones = this.getPlayerZones(playerZonesLayer);
     platforms.setCollisionByExclusion(-1, true);
@@ -101,22 +101,58 @@ export class Game extends Scene {
   handleTrigger(name) {
     switch (name) {
       case "dropTrigger":
-        console.log("Player triggered drop trap!");
+        this.tweens.add({
+          targets: this.dropTrap,
+          y: this.dropTrap.y + 300,
+          duration: 200,
+          ease: "Linear",
+        });
         break;
       case "spikesTrigger":
-        console.log("Player triggered spikes trap!");
+        this.tweens.add({
+          targets: this.spikesTrap,
+          x: this.spikesTrap.x + 100,
+          duration: 100,
+          ease: "Linear",
+        });
         break;
       case "holeTrigger":
-        console.log("Player triggered hole trap!");
+        this.tweens.add({
+          targets: this.holeTrap,
+          y: this.holeTrap.y + 300,
+          duration: 200,
+          ease: "Linear",
+        });
         break;
       case "platformTrigger":
-        console.log("Player triggered platform trap!");
+        this.tweens.add({
+          targets: this.platformTrap,
+          y: this.platformTrap.y + 100,
+          duration: 75,
+          ease: "Linear",
+        });
         break;
       case "separationTrigger":
-        console.log("Player triggered separation trap!");
+        this.tweens.add({
+          targets: this.separation1Trap,
+          x: this.separation1Trap.x - 40,
+          duration: 25,
+          ease: "Linear",
+        });
+        this.tweens.add({
+          targets: this.separation2Trap,
+          x: this.separation2Trap.x + 40,
+          duration: 25,
+          ease: "Linear",
+        });
         break;
       case "skyrocketTrigger":
-        console.log("Player triggered skyrocket trap!");
+        this.tweens.add({
+          targets: this.skyrocketTrap,
+          y: this.skyrocketTrap.y - 100,
+          duration: 100,
+          ease: "Linear",
+        });
         break;
       case "textTrigger":
         console.log("Player triggered text trap!");
