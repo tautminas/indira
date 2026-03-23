@@ -26,11 +26,13 @@ export class Game extends Scene {
     const playerZonesLayer = map.getObjectLayer("player_zones");
     const playerZones = this.getPlayerZones(playerZonesLayer);
     platforms.setCollisionByExclusion(-1, true);
+    this.dropTrap.setCollisionByExclusion(-1, true);
     const player = this.createPlayer(playerZones.start);
     this.createTriggers(map, player);
     this.createPlayerColliders(player, {
       colliders: {
         platformsColliders: platforms,
+        dropTrapColliders: this.dropTrap,
       },
     });
     this.createEndOfLevel(playerZones.end, player);
@@ -42,7 +44,9 @@ export class Game extends Scene {
   }
 
   createPlayerColliders(player, { colliders }) {
-    player.addCollider(colliders.platformsColliders);
+    player
+      .addCollider(colliders.platformsColliders)
+      .addCollider(colliders.dropTrapColliders);
   }
 
   setupFollowupCameraOn(player) {
