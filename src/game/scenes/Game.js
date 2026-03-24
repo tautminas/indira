@@ -146,7 +146,7 @@ export class Game extends Scene {
     const deathZone = this.physics.add
       .sprite(0, 700, "deathZone")
       .setAlpha(0)
-      .setSize(3600, 10)
+      .setSize(6800, 10)
       .setOrigin(0);
 
     const deathZoneOverlap = this.physics.add.overlap(player, deathZone, () => {
