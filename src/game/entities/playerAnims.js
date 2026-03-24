@@ -1,29 +1,37 @@
 export default (anims) => {
-  anims.create({
-    key: "idle",
-    frames: anims.generateFrameNumbers("player", { start: 0, end: 1 }),
-    frameRate: 2,
-    repeat: -1,
-  });
+  if (!anims.exists("idle")) {
+    anims.create({
+      key: "idle",
+      frames: anims.generateFrameNumbers("player", { start: 0, end: 1 }),
+      frameRate: 2,
+      repeat: -1,
+    });
+  }
 
-  anims.create({
-    key: "run",
-    frames: anims.generateFrameNumbers("player", { start: 2, end: 3 }),
-    frameRate: 2,
-    repeat: -1,
-  });
+  if (!anims.exists("run")) {
+    anims.create({
+      key: "run",
+      frames: anims.generateFrameNumbers("player", { start: 2, end: 3 }),
+      frameRate: 2,
+      repeat: -1,
+    });
+  }
 
-  anims.create({
-    key: "jump",
-    frames: anims.generateFrameNumbers("player", { start: 4, end: 5 }),
-    frameRate: 2,
-    repeat: -1,
-  });
+  if (!anims.exists("jump")) {
+    anims.create({
+      key: "jump",
+      frames: anims.generateFrameNumbers("player", { start: 4, end: 5 }),
+      frameRate: 2,
+      repeat: -1,
+    });
+  }
 
-  anims.create({
-    key: "die",
-    frames: anims.generateFrameNumbers("player", { start: 6, end: 7 }),
-    frameRate: 2,
-    repeat: 1,
-  });
+  if (!anims.exists("die")) {
+    anims.create({
+      key: "die",
+      frames: anims.generateFrameNumbers("player", { start: 6, end: 7 }),
+      frameRate: 2,
+      repeat: 1,
+    });
+  }
 };

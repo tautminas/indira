@@ -43,6 +43,9 @@ export class Game extends Scene {
     this.falldown3Trap.setCollisionByExclusion(-1, true);
     this.skyrocketTrap.setCollisionByExclusion(-1, true);
 
+    this.lives = parseInt(localStorage.getItem("lives")) || 9;
+    console.log(`Player has ${this.lives} lives left.`);
+
     const player = this.createPlayer(playerZones.start);
     this.createTriggers(map, player);
     this.createPlayerColliders(player, {
@@ -75,9 +78,15 @@ export class Game extends Scene {
     player
       .addCollider(colliders.platformsColliders)
       .addCollider(colliders.dropTrapColliders)
-      .addCollider(colliders.spikeTrapColliders)
+      .addCollider(
+        colliders.spikeTrapColliders,
+        this.handleTrapCollision.bind(this),
+      )
       .addCollider(colliders.holeTrapColliders)
-      .addCollider(colliders.platformTrapColliders)
+      .addCollider(
+        colliders.platformTrapColliders,
+        this.handleTrapCollision.bind(this),
+      )
       .addCollider(colliders.separation1TrapColliders)
       .addCollider(colliders.separation2TrapColliders)
       .addCollider(colliders.dropdown1TrapColliders)
@@ -86,7 +95,16 @@ export class Game extends Scene {
       .addCollider(colliders.falldown1TrapColliders)
       .addCollider(colliders.falldown2TrapColliders)
       .addCollider(colliders.falldown3TrapColliders)
-      .addCollider(colliders.skyrocketTrapColliders);
+      .addCollider(
+        colliders.skyrocketTrapColliders,
+        this.handleTrapCollision.bind(this),
+      );
+  }
+
+  handleTrapCollision(player, trap) {
+    this.lives--;
+    localStorage.setItem("lives", this.lives);
+    this.scene.restart();
   }
 
   setupFollowupCameraOn(player) {

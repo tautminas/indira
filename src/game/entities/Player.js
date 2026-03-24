@@ -30,6 +30,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(time, delta) {
+    if (!this.body) return;
+
     const { left, right, space, up } = this.cursors;
     const onFloor = this.body.onFloor();
 
