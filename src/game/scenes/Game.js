@@ -10,6 +10,7 @@ export class Game extends Scene {
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("tileset");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
+
     this.dropTrap = map.createLayer("drop", tileset, 0, 0);
     this.spikesTrap = map.createLayer("spikes", tileset, 0, 0);
     this.holeTrap = map.createLayer("hole", tileset, 0, 0);
@@ -23,16 +24,43 @@ export class Game extends Scene {
     this.falldown2Trap = map.createLayer("falldown2", tileset, 0, 0);
     this.falldown3Trap = map.createLayer("falldown3", tileset, 0, 0);
     this.skyrocketTrap = map.createLayer("skyrocket", tileset, 0, 0);
+
     const playerZonesLayer = map.getObjectLayer("player_zones");
     const playerZones = this.getPlayerZones(playerZonesLayer);
     platforms.setCollisionByExclusion(-1, true);
+
     this.dropTrap.setCollisionByExclusion(-1, true);
+    this.spikesTrap.setCollisionByExclusion(-1, true);
+    this.holeTrap.setCollisionByExclusion(-1, true);
+    this.platformTrap.setCollisionByExclusion(-1, true);
+    this.separation1Trap.setCollisionByExclusion(-1, true);
+    this.separation2Trap.setCollisionByExclusion(-1, true);
+    this.dropdown1Trap.setCollisionByExclusion(-1, true);
+    this.dropdown2Trap.setCollisionByExclusion(-1, true);
+    this.dropdown3Trap.setCollisionByExclusion(-1, true);
+    this.falldown1Trap.setCollisionByExclusion(-1, true);
+    this.falldown2Trap.setCollisionByExclusion(-1, true);
+    this.falldown3Trap.setCollisionByExclusion(-1, true);
+    this.skyrocketTrap.setCollisionByExclusion(-1, true);
+
     const player = this.createPlayer(playerZones.start);
     this.createTriggers(map, player);
     this.createPlayerColliders(player, {
       colliders: {
         platformsColliders: platforms,
         dropTrapColliders: this.dropTrap,
+        spikeTrapColliders: this.spikesTrap,
+        holeTrapColliders: this.holeTrap,
+        platformTrapColliders: this.platformTrap,
+        separation1TrapColliders: this.separation1Trap,
+        separation2TrapColliders: this.separation2Trap,
+        dropdown1TrapColliders: this.dropdown1Trap,
+        dropdown2TrapColliders: this.dropdown2Trap,
+        dropdown3TrapColliders: this.dropdown3Trap,
+        falldown1TrapColliders: this.falldown1Trap,
+        falldown2TrapColliders: this.falldown2Trap,
+        falldown3TrapColliders: this.falldown3Trap,
+        skyrocketTrapColliders: this.skyrocketTrap,
       },
     });
     this.createEndOfLevel(playerZones.end, player);
@@ -46,7 +74,19 @@ export class Game extends Scene {
   createPlayerColliders(player, { colliders }) {
     player
       .addCollider(colliders.platformsColliders)
-      .addCollider(colliders.dropTrapColliders);
+      .addCollider(colliders.dropTrapColliders)
+      .addCollider(colliders.spikeTrapColliders)
+      .addCollider(colliders.holeTrapColliders)
+      .addCollider(colliders.platformTrapColliders)
+      .addCollider(colliders.separation1TrapColliders)
+      .addCollider(colliders.separation2TrapColliders)
+      .addCollider(colliders.dropdown1TrapColliders)
+      .addCollider(colliders.dropdown2TrapColliders)
+      .addCollider(colliders.dropdown3TrapColliders)
+      .addCollider(colliders.falldown1TrapColliders)
+      .addCollider(colliders.falldown2TrapColliders)
+      .addCollider(colliders.falldown3TrapColliders)
+      .addCollider(colliders.skyrocketTrapColliders);
   }
 
   setupFollowupCameraOn(player) {
