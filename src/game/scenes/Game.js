@@ -67,6 +67,7 @@ export class Game extends Scene {
       },
     });
     this.createEndOfLevel(playerZones.end, player);
+    this.createDeathZone(player);
     this.setupFollowupCameraOn(player);
   }
 
@@ -101,7 +102,7 @@ export class Game extends Scene {
       );
   }
 
-  handleTrapCollision(player, trap) {
+  handleTrapCollision() {
     this.lives--;
     localStorage.setItem("lives", this.lives);
     this.scene.restart();
@@ -138,6 +139,19 @@ export class Game extends Scene {
     const eolOverlap = this.physics.add.overlap(player, endOfLevel, () => {
       eolOverlap.active = false;
       console.log("Payer has won!");
+    });
+  }
+
+  createDeathZone(player) {
+    const deathZone = this.physics.add
+      .sprite(0, 700, "deathZone")
+      .setAlpha(0)
+      .setSize(3600, 10)
+      .setOrigin(0);
+
+    const deathZoneOverlap = this.physics.add.overlap(player, deathZone, () => {
+      deathZoneOverlap.active = false;
+      this.handleTrapCollision();
     });
   }
 
