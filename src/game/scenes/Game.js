@@ -15,6 +15,7 @@ export class Game extends Scene {
     this.spikesTrap = map.createLayer("spikes", tileset, 0, 0);
     this.holeTrap = map.createLayer("hole", tileset, 0, 0);
     this.platformTrap = map.createLayer("platform", tileset, 0, 0);
+    this.platformTrapTriggered = false;
     this.separation1Trap = map.createLayer("separation1", tileset, 0, 0);
     this.separation2Trap = map.createLayer("separation2", tileset, 0, 0);
     this.dropdown1Trap = map.createLayer("dropdown1", tileset, 0, 0);
@@ -46,9 +47,9 @@ export class Game extends Scene {
     this.lives = parseInt(localStorage.getItem("lives")) || 9;
     console.log(`Player has ${this.lives} lives left.`);
 
-    const player = this.createPlayer(playerZones.start);
-    this.createTriggers(map, player);
-    this.createPlayerColliders(player, {
+    this.player = this.createPlayer(playerZones.start);
+    this.createTriggers(map, this.player);
+    this.createPlayerColliders(this.player, {
       colliders: {
         platformsColliders: platforms,
         dropTrapColliders: this.dropTrap,
@@ -66,9 +67,13 @@ export class Game extends Scene {
         skyrocketTrapColliders: this.skyrocketTrap,
       },
     });
-    this.createEndOfLevel(playerZones.end, player);
-    this.createDeathZone(player);
-    this.setupFollowupCameraOn(player);
+    this.createEndOfLevel(playerZones.end, this.player);
+    this.createDeathZone(this.player);
+    this.setupFollowupCameraOn(this.player);
+  }
+
+  update() {
+    this.checkPlatformTrapOverlap();
   }
 
   createPlayer(start) {
@@ -84,10 +89,7 @@ export class Game extends Scene {
         this.handleTrapCollision.bind(this),
       )
       .addCollider(colliders.holeTrapColliders)
-      .addCollider(
-        colliders.platformTrapColliders,
-        this.handleTrapCollision.bind(this),
-      )
+      .addCollider(colliders.platformTrapColliders)
       .addCollider(colliders.separation1TrapColliders)
       .addCollider(colliders.separation2TrapColliders)
       .addCollider(colliders.dropdown1TrapColliders)
@@ -233,6 +235,40 @@ export class Game extends Scene {
       case "textTrigger":
         console.log("Player triggered text trap!");
         break;
+    }
+  }
+
+  checkPlatformTrapOverlap() {
+    if (!this.player || !this.platformTrap) return;
+
+    const playerBounds = this.player.getBounds();
+
+    const tiles = this.platformTrap.getTilesWithinWorldXY(
+      this.player.x - 16,
+      this.player.y - 16,
+      32,
+      32,
+    );
+
+    const isOverlapping = tiles.some((tile) => {
+      if (tile.index === -1) return false;
+
+      const tileRect = new Phaser.Geom.Rectangle(
+        tile.getLeft(),
+        tile.getTop(),
+        tile.width,
+        tile.height,
+      );
+
+      return Phaser.Geom.Intersects.RectangleToRectangle(
+        playerBounds,
+        tileRect,
+      );
+    });
+
+    if (isOverlapping && !this.platformTrapTriggered) {
+      this.platformTrapTriggered = true;
+      this.handleTrapCollision(this.player);
     }
   }
 }
