@@ -19,11 +19,17 @@ export class Game extends Scene {
     this.separation1Trap = map.createLayer("separation1", tileset, 0, 0);
     this.separation2Trap = map.createLayer("separation2", tileset, 0, 0);
     this.dropdown1Trap = map.createLayer("dropdown1", tileset, 0, 0);
+    this.dropdown1TrapTriggered = false;
     this.dropdown2Trap = map.createLayer("dropdown2", tileset, 0, 0);
+    this.dropdown2TrapTriggered = false;
     this.dropdown3Trap = map.createLayer("dropdown3", tileset, 0, 0);
+    this.dropdown3TrapTriggered = false;
     this.falldown1Trap = map.createLayer("falldown1", tileset, 0, 0);
+    this.falldown1TrapTriggered = false;
     this.falldown2Trap = map.createLayer("falldown2", tileset, 0, 0);
+    this.falldown2TrapTriggered = false;
     this.falldown3Trap = map.createLayer("falldown3", tileset, 0, 0);
+    this.falldown3TrapTriggered = false;
     this.skyrocketTrap = map.createLayer("skyrocket", tileset, 0, 0);
 
     const playerZonesLayer = map.getObjectLayer("player_zones");
@@ -92,12 +98,30 @@ export class Game extends Scene {
       .addCollider(colliders.platformTrapColliders)
       .addCollider(colliders.separation1TrapColliders)
       .addCollider(colliders.separation2TrapColliders)
-      .addCollider(colliders.dropdown1TrapColliders)
-      .addCollider(colliders.dropdown2TrapColliders)
-      .addCollider(colliders.dropdown3TrapColliders)
-      .addCollider(colliders.falldown1TrapColliders)
-      .addCollider(colliders.falldown2TrapColliders)
-      .addCollider(colliders.falldown3TrapColliders)
+      .addCollider(
+        colliders.dropdown1TrapColliders,
+        this.handleDropdown1TrapCollision.bind(this),
+      )
+      .addCollider(
+        colliders.dropdown2TrapColliders,
+        this.handleDropdown2TrapCollision.bind(this),
+      )
+      .addCollider(
+        colliders.dropdown3TrapColliders,
+        this.handleDropdown3TrapCollision.bind(this),
+      )
+      .addCollider(
+        colliders.falldown1TrapColliders,
+        this.handleFalldown1TrapCollision.bind(this),
+      )
+      .addCollider(
+        colliders.falldown2TrapColliders,
+        this.handleFalldown2TrapCollision.bind(this),
+      )
+      .addCollider(
+        colliders.falldown3TrapColliders,
+        this.handleFalldown3TrapCollision.bind(this),
+      )
       .addCollider(
         colliders.skyrocketTrapColliders,
         this.handleTrapCollision.bind(this),
@@ -269,6 +293,72 @@ export class Game extends Scene {
     if (isOverlapping && !this.platformTrapTriggered) {
       this.platformTrapTriggered = true;
       this.handleTrapCollision(this.player);
+    }
+  }
+
+  handleDropdown1TrapCollision() {
+    if (!this.dropdown1TrapTriggered) {
+      this.dropdown1TrapTriggered = true;
+      this.tweens.add({
+        targets: this.dropdown1Trap,
+        y: this.dropdown1Trap.y + 50,
+        duration: 200,
+      });
+    }
+  }
+
+  handleDropdown2TrapCollision() {
+    if (!this.dropdown2TrapTriggered) {
+      this.dropdown2TrapTriggered = true;
+      this.tweens.add({
+        targets: this.dropdown2Trap,
+        y: this.dropdown2Trap.y + 50,
+        duration: 200,
+      });
+    }
+  }
+
+  handleDropdown3TrapCollision() {
+    if (!this.dropdown3TrapTriggered) {
+      this.dropdown3TrapTriggered = true;
+      this.tweens.add({
+        targets: this.dropdown3Trap,
+        y: this.dropdown3Trap.y + 50,
+        duration: 200,
+      });
+    }
+  }
+
+  handleFalldown1TrapCollision() {
+    if (!this.falldown1TrapTriggered) {
+      this.falldown1TrapTriggered = true;
+      this.tweens.add({
+        targets: this.falldown1Trap,
+        y: this.falldown1Trap.y + 50,
+        duration: 200,
+      });
+    }
+  }
+
+  handleFalldown2TrapCollision() {
+    if (!this.falldown2TrapTriggered) {
+      this.falldown2TrapTriggered = true;
+      this.tweens.add({
+        targets: this.falldown2Trap,
+        y: this.falldown2Trap.y + 50,
+        duration: 200,
+      });
+    }
+  }
+
+  handleFalldown3TrapCollision() {
+    if (!this.falldown3TrapTriggered) {
+      this.falldown3TrapTriggered = true;
+      this.tweens.add({
+        targets: this.falldown3Trap,
+        y: this.falldown3Trap.y + 50,
+        duration: 200,
+      });
     }
   }
 }
