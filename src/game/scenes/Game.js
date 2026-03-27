@@ -51,7 +51,7 @@ export class Game extends Scene {
     this.skyrocketTrap.setCollisionByExclusion(-1, true);
 
     this.lives = parseInt(localStorage.getItem("lives")) || 9;
-    console.log(`Player has ${this.lives} lives left.`);
+    this.createLivesDisplay();
 
     this.player = this.createPlayer(playerZones.start);
     this.createTriggers(map, this.player);
@@ -80,6 +80,25 @@ export class Game extends Scene {
 
   update() {
     this.checkPlatformTrapOverlap();
+  }
+
+  createLivesDisplay() {
+    this.add
+      .text(20, 30, "Lives:", {
+        fontSize: "30px",
+        color: "#ffffff",
+        fontFamily: "Arial",
+      })
+      .setScrollFactor(0, 0);
+
+    this.hearts = [];
+    for (let i = 0; i < 9; i++) {
+      const heart = this.add
+        .image(130 + i * 45, 47, i < this.lives ? "heart" : "heartbreak")
+        .setScale(0.2)
+        .setScrollFactor(0, 0);
+      this.hearts.push(heart);
+    }
   }
 
   createPlayer(start) {
