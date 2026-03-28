@@ -320,7 +320,7 @@ export class Game extends Scene {
       this.dropdown1TrapTriggered = true;
       this.tweens.add({
         targets: this.dropdown1Trap,
-        y: this.dropdown1Trap.y + 50,
+        y: this.dropdown1Trap.y + 280,
         duration: 200,
       });
     }
@@ -331,8 +331,10 @@ export class Game extends Scene {
       this.dropdown2TrapTriggered = true;
       this.tweens.add({
         targets: this.dropdown2Trap,
-        y: this.dropdown2Trap.y + 50,
-        duration: 200,
+        y: this.dropdown2Trap.y - 200,
+        duration: 400,
+        delay: 1000,
+        ease: "Linear",
       });
     }
   }
@@ -342,7 +344,7 @@ export class Game extends Scene {
       this.dropdown3TrapTriggered = true;
       this.tweens.add({
         targets: this.dropdown3Trap,
-        y: this.dropdown3Trap.y + 50,
+        y: this.dropdown3Trap.y + 400,
         duration: 200,
       });
     }
@@ -353,19 +355,21 @@ export class Game extends Scene {
       this.falldown1TrapTriggered = true;
       this.tweens.add({
         targets: this.falldown1Trap,
-        y: this.falldown1Trap.y + 50,
+        y: this.falldown1Trap.y + 400,
         duration: 200,
       });
     }
   }
 
   handleFalldown2TrapCollision() {
+    this.handleFalldown3TrapCollision();
     if (!this.falldown2TrapTriggered) {
       this.falldown2TrapTriggered = true;
       this.tweens.add({
         targets: this.falldown2Trap,
-        y: this.falldown2Trap.y + 50,
-        duration: 200,
+        x: this.falldown2Trap.x + 200,
+        duration: 800,
+        delay: 1000,
       });
     }
   }
@@ -375,7 +379,7 @@ export class Game extends Scene {
       this.falldown3TrapTriggered = true;
       this.tweens.add({
         targets: this.falldown3Trap,
-        y: this.falldown3Trap.y + 50,
+        y: this.falldown3Trap.y + 400,
         duration: 200,
       });
     }
