@@ -20,6 +20,7 @@ export class Preloader extends Scene {
     this.load.image("tileset", "tileset.png");
     this.load.tilemapTiledJSON("map", "map.tmj");
     this.load.image("cat", "cat.png");
+    this.load.image("dog", "dog.png");
     this.load.image("heart", "heart.png");
     this.load.image("heartbreak", "heartbreak.png");
     this.load.spritesheet("player", "player.png", {

@@ -53,6 +53,8 @@ export class Game extends Scene {
     this.lives = parseInt(localStorage.getItem("lives")) || 9;
     this.createLivesDisplay();
 
+    this.createDogDisplay();
+
     this.player = this.createPlayer(playerZones.start);
     this.createTriggers(map, this.player);
     this.createPlayerColliders(this.player, {
@@ -99,6 +101,10 @@ export class Game extends Scene {
         .setScrollFactor(0, 0);
       this.hearts.push(heart);
     }
+  }
+
+  createDogDisplay() {
+    this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
   }
 
   createPlayer(start) {
