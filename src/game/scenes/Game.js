@@ -105,6 +105,14 @@ export class Game extends Scene {
 
   createDogDisplay() {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
+    this.add.image(1000, 90, "dialog").setScale(0.25).setScrollFactor(0, 0);
+    this.add
+      .text(900, 75, "Good luck!", {
+        fontSize: "30px",
+        color: "#ffffff",
+        fontFamily: "Arial",
+      })
+      .setScrollFactor(0, 0);
   }
 
   createPlayer(start) {
