@@ -105,8 +105,11 @@ export class Game extends Scene {
 
   createDogDisplay() {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
-    this.add.image(1000, 90, "dialog").setScale(0.25).setScrollFactor(0, 0);
-    this.add
+    this.dialogImage = this.add
+      .image(1000, 90, "dialog")
+      .setScale(0.25)
+      .setScrollFactor(0, 0);
+    this.dialogText = this.add
       .text(900, 75, "Good luck!", {
         fontSize: "30px",
         color: "#ffffff",
@@ -290,7 +293,12 @@ export class Game extends Scene {
         });
         break;
       case "textTrigger":
-        console.log("Player triggered text trap!");
+        this.tweens.add({
+          targets: [this.dialogImage, this.dialogText],
+          y: "+=200",
+          duration: 1000,
+          ease: "Linear",
+        });
         break;
     }
   }
