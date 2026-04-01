@@ -51,6 +51,7 @@ export class Game extends Scene {
     this.skyrocketTrap.setCollisionByExclusion(-1, true);
 
     this.lives = parseInt(localStorage.getItem("lives")) || 9;
+    this.isGameOver();
     this.createLivesDisplay();
 
     this.createDogDisplay();
@@ -167,7 +168,17 @@ export class Game extends Scene {
   handleTrapCollision() {
     this.lives--;
     localStorage.setItem("lives", this.lives);
-    this.scene.restart();
+    if (!this.isGameOver()) {
+      this.scene.restart();
+    }
+  }
+
+  isGameOver() {
+    if (this.lives <= 0) {
+      this.scene.start("GameOver");
+      return true;
+    }
+    return false;
   }
 
   setupFollowupCameraOn(player) {

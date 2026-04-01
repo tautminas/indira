@@ -8,21 +8,30 @@ export class GameOver extends Scene {
   create() {
     this.cameras.main.setBackgroundColor(0xff0000);
 
-    this.add.image(512, 384, "background").setAlpha(0.5);
-
-    this.add
-      .text(512, 384, "Game Over", {
-        fontFamily: "Arial Black",
-        fontSize: 64,
+    this.add.image(730, 300, "dog").setScale(0.25).setScrollFactor(0, 0);
+    this.add.image(500, 300, "dialog").setScale(0.25).setScrollFactor(0, 0);
+    this.dialogText = this.add
+      .text(410, 280, "You died!", {
+        fontSize: "30px",
         color: "#ffffff",
-        stroke: "#000000",
-        strokeThickness: 8,
-        align: "center",
+        fontFamily: "Arial",
       })
-      .setOrigin(0.5);
+      .setScrollFactor(0, 0);
+    this.add
+      .text(
+        150,
+        600,
+        "You lost you 9 cat lives. You will never get a change to play this game again!\nUnless you know how to open different browser or delete local storage. But you don't, do you?",
+        {
+          fontSize: "20px",
+          color: "#ffffff",
+          fontFamily: "Arial",
+        },
+      )
+      .setScrollFactor(0, 0);
 
     this.input.once("pointerdown", () => {
-      this.scene.start("MainMenu");
+      this.scene.start("Game");
     });
   }
 }
