@@ -6,12 +6,10 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    this.add.image(512, 384, "background");
-
-    this.add.image(512, 300, "logo");
+    this.add.image(620, 300, "logo");
 
     this.add
-      .text(512, 460, "Main Menu", {
+      .text(620, 460, "Main Menu", {
         fontFamily: "Arial Black",
         fontSize: 38,
         color: "#ffffff",
@@ -22,7 +20,12 @@ export class MainMenu extends Scene {
       .setOrigin(0.5);
 
     this.input.once("pointerdown", () => {
-      this.scene.start("Game");
+      const lives = parseInt(localStorage.getItem("lives")) || 9;
+      if (lives === 9) {
+        this.scene.start("GameStart");
+      } else {
+        this.scene.start("Game");
+      }
     });
   }
 }
