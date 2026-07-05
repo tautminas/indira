@@ -2,6 +2,7 @@ import { Boot } from "./scenes/Boot";
 import { Game as MainGame } from "./scenes/Game";
 import { GameOver } from "./scenes/GameOver";
 import { GameStart } from "./scenes/GameStart";
+import { Info } from "./scenes/Info";
 import { MainMenu } from "./scenes/MainMenu";
 import { Preloader } from "./scenes/Preloader";
 import { AUTO, Game } from "phaser";
@@ -23,7 +24,7 @@ const config = {
       debug: true,
     },
   },
-  scene: [Boot, Preloader, MainMenu, GameStart, MainGame, GameOver],
+  scene: [Boot, Preloader, MainMenu, Info, GameStart, MainGame, GameOver],
 };
 
 const StartGame = (parent) => {

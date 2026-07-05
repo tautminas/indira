@@ -9,6 +9,8 @@ export class MainMenu extends Scene {
   }
 
   create() {
+    this.menuItems = [];
+    this.selectedIndex = 0;
     this.add.image(620, 220, "logo");
 
     const style = {
@@ -41,9 +43,9 @@ export class MainMenu extends Scene {
         },
       },
       {
-        text: "Dogge Info",
+        text: "Information",
         action: () => {
-          this.scene.start("DoggeInfo");
+          this.scene.start("Info");
         },
       },
       {
