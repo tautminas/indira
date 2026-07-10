@@ -284,14 +284,14 @@ export class Game extends Scene {
       case "separationTrigger":
         this.tweens.add({
           targets: this.separation1Trap,
-          x: this.separation1Trap.x - 40,
-          duration: 25,
+          x: this.separation1Trap.x - 75,
+          duration: 70,
           ease: "Linear",
         });
         this.tweens.add({
           targets: this.separation2Trap,
-          x: this.separation2Trap.x + 40,
-          duration: 25,
+          x: this.separation2Trap.x + 75,
+          duration: 70,
           ease: "Linear",
         });
         break;

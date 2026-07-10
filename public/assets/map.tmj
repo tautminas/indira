@@ -527,16 +527,16 @@
                  "y":164.893939393939
                 }, 
                 {
-                 "height":94,
+                 "height":206,
                  "id":20,
                  "name":"separationTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":120,
-                 "x":2404,
-                 "y":346
+                 "width":160,
+                 "x":2364,
+                 "y":234
                 }, 
                 {
                  "height":88,
