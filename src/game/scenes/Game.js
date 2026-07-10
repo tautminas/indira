@@ -276,9 +276,9 @@ export class Game extends Scene {
       case "platformTrigger":
         this.tweens.add({
           targets: this.platformTrap,
-          y: this.platformTrap.y + 100,
-          duration: 75,
-          ease: "Linear",
+          y: this.platformTrap.y + 96,
+          duration: 350,
+          ease: "Quad.easeIn",
         });
         break;
       case "separationTrigger":
