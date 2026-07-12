@@ -354,6 +354,7 @@ export class Game extends Scene {
       this.tweens.add({
         targets: this.dropdown1Trap,
         y: this.dropdown1Trap.y + 280,
+        delay: 500,
         duration: 200,
       });
     }
@@ -364,7 +365,7 @@ export class Game extends Scene {
       this.dropdown2TrapTriggered = true;
       this.tweens.add({
         targets: this.dropdown2Trap,
-        y: this.dropdown2Trap.y - 200,
+        y: this.dropdown2Trap.y - 250,
         duration: 400,
         delay: 1000,
         ease: "Linear",
@@ -378,6 +379,7 @@ export class Game extends Scene {
       this.tweens.add({
         targets: this.dropdown3Trap,
         y: this.dropdown3Trap.y + 400,
+        delay: 500,
         duration: 200,
       });
     }
