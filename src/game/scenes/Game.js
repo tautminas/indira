@@ -365,7 +365,7 @@ export class Game extends Scene {
       this.dropdown2TrapTriggered = true;
       this.tweens.add({
         targets: this.dropdown2Trap,
-        y: this.dropdown2Trap.y - 250,
+        y: this.dropdown2Trap.y - 262,
         duration: 400,
         delay: 1000,
         ease: "Linear",
