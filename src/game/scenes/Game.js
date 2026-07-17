@@ -187,7 +187,13 @@ export class Game extends Scene {
     const mapWidth = 6400; // Shouldn't be hardcoded
     const mapOffset = mapWidth > width ? mapWidth - width : 0;
     const zoomFactor = 1;
-    this.physics.world.setBounds(0, 0, width + mapOffset, height + 200);
+    const jumpHeadroom = 100;
+    this.physics.world.setBounds(
+      0,
+      -jumpHeadroom,
+      width + mapOffset,
+      height + 200,
+    );
     this.cameras.main
       .setBounds(0, 0, width + mapOffset, height)
       .setZoom(zoomFactor);
