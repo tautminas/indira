@@ -397,6 +397,7 @@ export class Game extends Scene {
       this.tweens.add({
         targets: this.falldown1Trap,
         y: this.falldown1Trap.y + 400,
+        delay: 250,
         duration: 200,
       });
     }
@@ -422,6 +423,7 @@ export class Game extends Scene {
         targets: this.falldown3Trap,
         y: this.falldown3Trap.y + 400,
         duration: 200,
+        delay: 250,
       });
     }
   }
