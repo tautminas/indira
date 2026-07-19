@@ -306,6 +306,7 @@ export class Game extends Scene {
           targets: this.skyrocketTrap,
           y: this.skyrocketTrap.y - 100,
           duration: 100,
+          delay: 100,
           ease: "Linear",
         });
         break;
