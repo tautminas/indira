@@ -107,7 +107,7 @@ export class Game extends Scene {
   createDogDisplay() {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
     this.dialogImage = this.add
-      .image(1000, 90, "dialog")
+      .image(993, 90, "dialog")
       .setScale(0.25)
       .setScrollFactor(0, 0);
     this.dialogText = this.add
@@ -313,8 +313,8 @@ export class Game extends Scene {
       case "textTrigger":
         this.tweens.add({
           targets: [this.dialogImage, this.dialogText],
-          y: "+=200",
-          duration: 1000,
+          y: "+=170",
+          duration: 500,
           ease: "Linear",
         });
         break;
