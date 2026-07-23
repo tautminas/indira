@@ -54,8 +54,6 @@ export class Game extends Scene {
     this.isGameOver();
     this.createLivesDisplay();
 
-    this.createDogDisplay();
-
     this.player = this.createPlayer(playerZones.start);
     this.createTriggers(map, this.player);
     this.createPlayerColliders(this.player, {
@@ -78,6 +76,7 @@ export class Game extends Scene {
     });
     this.createEndOfLevel(playerZones.end, this.player);
     this.createDeathZone(this.player);
+    this.createDogDisplay(this.player);
     this.setupFollowupCameraOn(this.player);
   }
 
@@ -104,7 +103,7 @@ export class Game extends Scene {
     }
   }
 
-  createDogDisplay() {
+  createDogDisplay(player) {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
     this.dialogImage = this.add
       .image(993, 90, "dialog")
@@ -117,6 +116,16 @@ export class Game extends Scene {
         fontFamily: "Arial",
       })
       .setScrollFactor(0, 0);
+
+    const dialog = this.physics.add
+      .sprite(player.x, player.y, "dialogImage")
+      .setAlpha(0)
+      .setSize(5, 200)
+      .setOrigin(0.5, 1);
+    const dialogOverlap = this.physics.add.overlap(player, dialog, () => {
+      dialogOverlap.active = false;
+      console.log("Dialog triggered!");
+    });
   }
 
   createPlayer(start) {
@@ -214,7 +223,6 @@ export class Game extends Scene {
       .setAlpha(0)
       .setSize(5, 200)
       .setOrigin(0.5, 1);
-
     const eolOverlap = this.physics.add.overlap(player, endOfLevel, () => {
       eolOverlap.active = false;
       console.log("Payer has won!");
