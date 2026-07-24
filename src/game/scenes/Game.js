@@ -105,8 +105,9 @@ export class Game extends Scene {
 
   createDogDisplay(player) {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
-    this.dialogImage = this.add
-      .image(993, 90, "dialog")
+
+    this.dialogImage = this.physics.add
+      .sprite(993, 90, "dialog")
       .setScale(0.25)
       .setScrollFactor(0, 0);
     this.dialogText = this.add
@@ -116,20 +117,10 @@ export class Game extends Scene {
         fontFamily: "Arial",
       })
       .setScrollFactor(0, 0);
-
-    const dialog = this.physics.add
-      .sprite(player.x, player.y, "dialogImage")
-      .setAlpha(0)
-      .setSize(5, 200)
-      .setOrigin(0.5, 1);
-    const dialogOverlap = this.physics.add.overlap(player, dialog, () => {
-      dialogOverlap.active = false;
-      console.log("Dialog triggered!");
-    });
   }
 
   createPlayer(start) {
-    return new Player(this, start.x, start.y).setScale(0.1);
+    return new Player(this, start.x, start.y).setScale(0.1).setDepth(10);
   }
 
   createPlayerColliders(player, { colliders }) {
@@ -319,6 +310,19 @@ export class Game extends Scene {
         });
         break;
       case "textTrigger":
+        const camera = this.cameras.main;
+        this.dialogImage.setPosition(
+          this.dialogImage.x + camera.scrollX,
+          this.dialogImage.y + camera.scrollY,
+        );
+        this.dialogImage.setScrollFactor(1);
+
+        this.dialogText.setPosition(
+          this.dialogText.x + camera.scrollX,
+          this.dialogText.y + camera.scrollY,
+        );
+        this.dialogText.setScrollFactor(1);
+
         this.tweens.add({
           targets: [this.dialogImage, this.dialogText],
           y: "+=170",
