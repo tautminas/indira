@@ -323,6 +323,15 @@ export class Game extends Scene {
         );
         this.dialogText.setScrollFactor(1);
 
+        const dialogOverlap = this.physics.add.overlap(
+          this.player,
+          this.dialogImage,
+          () => {
+            dialogOverlap.active = false;
+            this.handleTrapCollision(this.player);
+          },
+        );
+
         this.tweens.add({
           targets: [this.dialogImage, this.dialogText],
           y: "+=170",
