@@ -116,7 +116,8 @@ export class Game extends Scene {
         color: "#ffffff",
         fontFamily: "Arial",
       })
-      .setScrollFactor(0, 0);
+      .setScrollFactor(0, 0)
+      .setDepth(2);
   }
 
   createPlayer(start) {
@@ -337,6 +338,20 @@ export class Game extends Scene {
           y: "+=170",
           duration: 500,
           ease: "Linear",
+          onComplete: () => {
+            dialogOverlap.destroy();
+
+            const { x, y } = this.dialogImage;
+            this.dialogImage.destroy();
+
+            this.dialogImage = this.physics.add
+              .staticImage(x, y, "dialog")
+              .setScale(0.25);
+
+            this.dialogImage.refreshBody();
+
+            this.physics.add.collider(this.player, this.dialogImage);
+          },
         });
         break;
     }
