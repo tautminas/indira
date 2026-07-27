@@ -106,7 +106,7 @@ export class Game extends Scene {
   createDogDisplay(player) {
     this.add.image(1200, 100, "dog").setScale(0.25).setScrollFactor(0, 0);
 
-    this.dialogImage = this.physics.add
+    this.dialogImage = this.add
       .sprite(993, 90, "dialog")
       .setScale(0.25)
       .setScrollFactor(0, 0);
@@ -311,6 +311,7 @@ export class Game extends Scene {
         });
         break;
       case "textTrigger":
+        this.physics.add.existing(this.dialogImage);
         const camera = this.cameras.main;
         this.dialogImage.setPosition(
           this.dialogImage.x + camera.scrollX,
