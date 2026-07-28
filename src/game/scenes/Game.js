@@ -258,8 +258,8 @@ export class Game extends Scene {
       case "dropTrigger":
         this.tweens.add({
           targets: this.dropTrap,
-          y: this.dropTrap.y + 300,
-          duration: 200,
+          y: this.dropTrap.y + 350,
+          duration: 250,
           ease: "Linear",
         });
         break;
@@ -274,8 +274,8 @@ export class Game extends Scene {
       case "holeTrigger":
         this.tweens.add({
           targets: this.holeTrap,
-          y: this.holeTrap.y + 300,
-          duration: 200,
+          y: this.holeTrap.y + 400,
+          duration: 275,
           ease: "Linear",
         });
         break;
