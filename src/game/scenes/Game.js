@@ -7,7 +7,7 @@ export class Game extends Scene {
   }
 
   create() {
-    this.add.image(512, 384, "background");
+    // this.add.image(512, 384, "background");
     const map = this.make.tilemap({ key: "map" });
     const tileset = map.addTilesetImage("tileset");
     const platforms = map.createLayer("platforms", tileset, 0, 0);
