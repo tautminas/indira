@@ -12,7 +12,7 @@ export default (anims) => {
     anims.create({
       key: "run",
       frames: anims.generateFrameNumbers("player", { start: 2, end: 3 }),
-      frameRate: 2,
+      frameRate: 12,
       repeat: -1,
     });
   }
