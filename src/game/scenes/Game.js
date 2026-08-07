@@ -416,6 +416,7 @@ export class Game extends Scene {
   }
 
   handleDropdown2TrapCollision() {
+    this.handleDropdown3TrapCollision();
     if (!this.dropdown2TrapTriggered) {
       this.dropdown2TrapTriggered = true;
       this.tweens.add({
