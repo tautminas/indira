@@ -119,7 +119,7 @@ export class Game extends Scene {
 
     this.dialogImage = this.add
       .sprite(993, 90, "dialog")
-      .setScale(0.25)
+      .setScale(0.22)
       .setScrollFactor(0, 0);
     this.dialogText = this.add
       .text(900, 75, "Good luck!", {
@@ -347,7 +347,7 @@ export class Game extends Scene {
 
         this.tweens.add({
           targets: [this.dialogImage, this.dialogText],
-          y: "+=170",
+          y: "+=173",
           duration: 500,
           ease: "Linear",
           onComplete: () => {
@@ -358,7 +358,7 @@ export class Game extends Scene {
 
             this.dialogImage = this.physics.add
               .staticImage(x, y, "dialog")
-              .setScale(0.25);
+              .setScale(0.22);
 
             this.dialogImage.refreshBody();
 
