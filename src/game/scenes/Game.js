@@ -85,6 +85,12 @@ export class Game extends Scene {
         skyrocketTrapColliders: this.skyrocketTrap,
       },
     });
+
+    this.dialogTextFontSize = "30px";
+    this.dialogTextWords = "Good luck!";
+    this.dialogTextPositionX = 900;
+    this.dialogTextPositionY = 75;
+
     this.createEndOfLevel(playerZones.end, this.player);
     this.createDeathZone(this.player);
     this.createDogDisplay(this.player);
@@ -122,13 +128,30 @@ export class Game extends Scene {
       .setScale(0.22)
       .setScrollFactor(0, 0);
     this.dialogText = this.add
-      .text(900, 75, "Good luck!", {
-        fontSize: "30px",
-        color: "#ffffff",
-        fontFamily: "Arial",
-      })
+      .text(
+        this.dialogTextPositionX,
+        this.dialogTextPositionY,
+        this.dialogTextWords,
+        {
+          fontSize: this.dialogTextFontSize,
+          color: "#ffffff",
+          fontFamily: "Arial",
+        },
+      )
       .setScrollFactor(0, 0)
       .setDepth(2);
+  }
+
+  updateDialogText(text, fontSize, x, y) {
+    const newText = text !== undefined ? text : this.dialogText.text;
+    const newX = x !== undefined ? x : this.dialogText.x;
+    const newY = y !== undefined ? y : this.dialogText.y;
+    const newFontSize =
+      fontSize !== undefined ? fontSize : this.dialogText.style.fontSize;
+
+    this.dialogText.setText(newText);
+    this.dialogText.setPosition(newX, newY);
+    this.dialogText.setStyle({ fontSize: newFontSize });
   }
 
   createPlayer(start) {
@@ -273,6 +296,7 @@ export class Game extends Scene {
           duration: 250,
           ease: "Linear",
         });
+        this.updateDialogText("Drop!", "30px", 900, 75);
         break;
       case "spikesTrigger":
         this.tweens.add({
