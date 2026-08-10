@@ -296,7 +296,11 @@ export class Game extends Scene {
           duration: 250,
           ease: "Linear",
         });
-        this.updateDialogText("Drop!", "30px", 900, 75);
+        break;
+      case "dropTriggerCleared":
+        if (this.lives === 9) {
+          this.updateDialogText("Drop cleared!", "30px", 900, 75);
+        }
         break;
       case "spikesTrigger":
         this.tweens.add({

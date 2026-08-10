@@ -561,6 +561,18 @@
                  "width":192,
                  "x":5983.33333333333,
                  "y":193.333333333334
+                }, 
+                {
+                 "height":224,
+                 "id":27,
+                 "name":"dropTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":386.666666666667,
+                 "y":190.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -569,7 +581,7 @@
          "y":0
         }],
  "nextlayerid":17,
- "nextobjectid":27,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.0",
