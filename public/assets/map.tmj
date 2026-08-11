@@ -451,8 +451,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":80.69696969697,
-                 "y":273.378787878788
+                 "x":5686.69696969697,
+                 "y":246.045454545455
                 }, 
                 {
                  "height":0,
@@ -491,79 +491,79 @@
                  "y":358.666666666666
                 }, 
                 {
-                 "height":187.333333333333,
+                 "height":344.333333333333,
                  "id":14,
                  "name":"spikesTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61,
+                 "width":67,
                  "x":828.666666666667,
-                 "y":192
+                 "y":35
                 }, 
                 {
-                 "height":218.666666666667,
+                 "height":288.537878787879,
                  "id":17,
                  "name":"holeTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":81.333333333333,
-                 "x":1455.33333333334,
-                 "y":95.333333333333
+                 "width":80.1380796453203,
+                 "x":1455.43096017735,
+                 "y":31.2121212121209
                 }, 
                 {
-                 "height":59.6969696969697,
+                 "height":64.030303030303,
                  "id":19,
                  "name":"platformTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":90,
-                 "x":2212.24242424242,
-                 "y":164.893939393939
+                 "width":96.9999999999995,
+                 "x":2207.90909090909,
+                 "y":160.560606060606
                 }, 
                 {
-                 "height":206,
+                 "height":216,
                  "id":20,
                  "name":"separationTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":160,
-                 "x":2399,
-                 "y":236
+                 "width":221.333333333333,
+                 "x":2337.66666666667,
+                 "y":226
                 }, 
                 {
-                 "height":88,
+                 "height":256.25,
                  "id":21,
                  "name":"skyrocketTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":75,
-                 "x":5273,
-                 "y":188
+                 "width":67.261363636364,
+                 "x":5276.86931818182,
+                 "y":31.75
                 }, 
                 {
-                 "height":110.666666666667,
+                 "height":115.652777777778,
                  "id":25,
                  "name":"textTrigger",
                  "opacity":1,
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":192,
-                 "x":5983.33333333333,
-                 "y":193.333333333334
+                 "width":249.666666666666,
+                 "x":5990,
+                 "y":202.756944444445
                 }, 
                 {
-                 "height":224,
+                 "height":380,
                  "id":27,
                  "name":"dropTriggerCleared",
                  "opacity":1,
@@ -572,7 +572,91 @@
                  "visible":true,
                  "width":64,
                  "x":386.666666666667,
-                 "y":190.666666666667
+                 "y":34.666666666667
+                }, 
+                {
+                 "height":378.666666666667,
+                 "id":31,
+                 "name":"spikesTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":57.3333333333334,
+                 "x":998.666666666667,
+                 "y":33.3333333333333
+                }, 
+                {
+                 "height":288.333333333333,
+                 "id":32,
+                 "name":"holeTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":82.6666666666665,
+                 "x":1536,
+                 "y":31.3333333333333
+                }, 
+                {
+                 "height":542.166666666667,
+                 "id":33,
+                 "name":"separationTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":81.166666666667,
+                 "x":2737.83333333333,
+                 "y":32.3333333333334
+                }, 
+                {
+                 "height":287.75,
+                 "id":34,
+                 "name":"skyrocketTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":5344,
+                 "y":31.75
+                }, 
+                {
+                 "height":280,
+                 "id":35,
+                 "name":"dropdownTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":81.3333333333335,
+                 "x":3726.66666666667,
+                 "y":36
+                }, 
+                {
+                 "height":284,
+                 "id":36,
+                 "name":"falldownTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":84.666666666667,
+                 "x":4718.66666666667,
+                 "y":32
+                }, 
+                {
+                 "height":172,
+                 "id":38,
+                 "name":"textTriggerCleared",
+                 "opacity":1,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":225.20788530466,
+                 "x":6014.06272401434,
+                 "y":30.3333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -581,7 +665,7 @@
          "y":0
         }],
  "nextlayerid":17,
- "nextobjectid":31,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.12.0",
