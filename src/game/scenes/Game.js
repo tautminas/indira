@@ -297,11 +297,6 @@ export class Game extends Scene {
           ease: "Linear",
         });
         break;
-      case "dropTriggerCleared":
-        if (this.lives === 9) {
-          this.updateDialogText("Drop cleared!", "30px", 900, 75);
-        }
-        break;
       case "spikesTrigger":
         this.tweens.add({
           targets: this.spikesTrap,
@@ -393,6 +388,37 @@ export class Game extends Scene {
             this.physics.add.collider(this.player, this.dialogImage);
           },
         });
+        break;
+      case "beginningCleared":
+        if (this.lives === 9) {
+          this.updateDialogText("Welcome!", "30px", 900, 75);
+        } else {
+          this.updateDialogText("Good luck!", "30px", 900, 75);
+        }
+        break;
+      case "dropTriggerCleared":
+        this.updateDialogText("Drop cleared!", "30px", 900, 75);
+        break;
+      case "spikesTriggerCleared":
+        this.updateDialogText("Spikes cleared!", "30px", 900, 75);
+        break;
+      case "holeTriggerCleared":
+        this.updateDialogText("Hole cleared!", "30px", 900, 75);
+        break;
+      case "separationTriggerCleared":
+        this.updateDialogText("Separation cleared!", "30px", 900, 75);
+        break;
+      case "dropdownTriggerCleared":
+        this.updateDialogText("Dropdown cleared!", "30px", 900, 75);
+        break;
+      case "falldownTriggerCleared":
+        this.updateDialogText("Falldown cleared!", "30px", 900, 75);
+        break;
+      case "skyrocketTriggerCleared":
+        this.updateDialogText("Skyrocket cleared!", "30px", 900, 75);
+        break;
+      case "textTriggerCleared":
+        this.updateDialogText("Text cleared!", "30px", 6020, 250);
         break;
     }
   }
