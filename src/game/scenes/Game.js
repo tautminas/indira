@@ -103,10 +103,10 @@ export class Game extends Scene {
 
   createLivesDisplay() {
     this.add
-      .text(20, 30, "Lives:", {
-        fontSize: "30px",
+      .text(15, 30, "Lives:", {
+        fontSize: "27px",
         color: "#ffffff",
-        fontFamily: "Arial",
+        fontFamily: "Fredoka_Expanded-Regular",
       })
       .setScrollFactor(0, 0);
 

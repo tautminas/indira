@@ -29,6 +29,10 @@ export class Preloader extends Scene {
       frameHeight: 493,
       spacing: 0,
     });
+    this.load.font(
+      "Fredoka_Expanded-Regular",
+      "fonts/Fredoka/static/Fredoka_Expanded-Regular.ttf",
+    );
   }
 
   create() {
