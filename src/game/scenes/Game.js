@@ -103,17 +103,17 @@ export class Game extends Scene {
 
   createLivesDisplay() {
     this.add
-      .text(15, 30, "Lives:", {
-        fontSize: "27px",
-        color: "#ffffff",
-        fontFamily: "Fredoka_Expanded-Regular",
+      .text(15, 28, "Lives:", {
+        fontSize: "35px",
+        color: "#080c1a",
+        fontFamily: "Fredoka-SemiBold",
       })
       .setScrollFactor(0, 0);
 
     this.hearts = [];
     for (let i = 0; i < 9; i++) {
       const heart = this.add
-        .image(130 + i * 45, 47, i < this.lives ? "heart" : "heartbreak")
+        .image(135 + i * 45, 47, i < this.lives ? "heart" : "heartbreak")
         .setScale(0.2)
         .setScrollFactor(0, 0);
       this.hearts.push(heart);
@@ -134,8 +134,8 @@ export class Game extends Scene {
         this.dialogTextWords,
         {
           fontSize: this.dialogTextFontSize,
-          color: "#ffffff",
-          fontFamily: "Arial",
+          color: "#080c1a",
+          fontFamily: "Fredoka-Regular",
         },
       )
       .setScrollFactor(0, 0)
@@ -393,7 +393,7 @@ export class Game extends Scene {
         if (this.lives === 9) {
           this.updateDialogText("Welcome!", "30px", 900, 75);
         } else {
-          this.updateDialogText("Good luck!", "30px", 900, 75);
+          this.updateDialogText("Good luck!", "25px", 900, 75);
         }
         break;
       case "dropTriggerCleared":

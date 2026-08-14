@@ -30,8 +30,12 @@ export class Preloader extends Scene {
       spacing: 0,
     });
     this.load.font(
-      "Fredoka_Expanded-Regular",
-      "fonts/Fredoka/static/Fredoka_Expanded-Regular.ttf",
+      "Fredoka-Regular",
+      "fonts/Fredoka/static/Fredoka-Regular.ttf",
+    );
+    this.load.font(
+      "Fredoka-SemiBold",
+      "fonts/Fredoka/static/Fredoka-SemiBold.ttf",
     );
   }
 
