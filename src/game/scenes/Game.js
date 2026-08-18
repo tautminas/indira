@@ -390,10 +390,71 @@ export class Game extends Scene {
         });
         break;
       case "beginningCleared":
-        if (this.lives === 9) {
-          this.updateDialogText("Welcome!", "30px", 900, 75);
-        } else {
-          this.updateDialogText("Good luck!", "25px", 900, 75);
+        switch (this.lives) {
+          case 9:
+            this.updateDialogText(
+              "        Nine lives?\nYou'll need them all!",
+              "20px",
+              895,
+              68,
+            );
+            break;
+          case 8:
+            this.updateDialogText(
+              "First life gone for nothing!",
+              "16px",
+              890,
+              80,
+            );
+            break;
+          case 7:
+            this.updateDialogText("Is 7 your lucky number?", "18px", 890, 79);
+            break;
+          case 6:
+            this.updateDialogText(
+              "       Life goes fast :/\nOne third gone already!",
+              "18px",
+              889,
+              71,
+            );
+            break;
+          case 5:
+            this.updateDialogText("High five!", "39px", 902, 69);
+            break;
+          case 4:
+            this.updateDialogText(
+              "        Un, dos, tres, cuatro!\nHechizeros Band - El Sonidito",
+              "14px",
+              891,
+              74,
+            );
+            break;
+          case 3:
+            this.updateDialogText(
+              "Three hearts still beating.\n              Game on!",
+              "16px",
+              892,
+              75,
+            );
+            break;
+          case 2:
+            this.updateDialogText(
+              "        Nervous?\nOnly two lives left!",
+              "21px",
+              898,
+              67,
+            );
+            break;
+          case 1:
+            this.updateDialogText(
+              "Last life remains.\n  Make it count!",
+              "25px",
+              889,
+              63,
+            );
+            break;
+          default:
+            this.updateDialogText("Good luck!", "38px", 894, 69);
         }
         break;
       case "dropTriggerCleared":
