@@ -86,10 +86,10 @@ export class Game extends Scene {
       },
     });
 
-    this.dialogTextFontSize = "30px";
+    this.dialogTextFontSize = "38px";
     this.dialogTextWords = "Good luck!";
-    this.dialogTextPositionX = 900;
-    this.dialogTextPositionY = 75;
+    this.dialogTextPositionX = 894;
+    this.dialogTextPositionY = 69;
 
     this.createEndOfLevel(playerZones.end, this.player);
     this.createDeathZone(this.player);
@@ -458,28 +458,36 @@ export class Game extends Scene {
         }
         break;
       case "dropTriggerCleared":
-        this.updateDialogText("Drop cleared!", "30px", 900, 75);
+        this.updateDialogText("Easy jump for the cat :)", "18px", 890, 79);
         break;
       case "spikesTriggerCleared":
-        this.updateDialogText("Spikes cleared!", "30px", 900, 75);
+        this.updateDialogText(
+          "     Glad you kept\nthose paws healthy!",
+          "18px",
+          905,
+          71,
+        );
         break;
       case "holeTriggerCleared":
-        this.updateDialogText("Hole cleared!", "30px", 900, 75);
+        this.updateDialogText("Good instincts :o", "25px", 891, 75);
+        break;
+      case "platformTriggerCleared":
+        this.updateDialogText("Watching your head, I see...", "16px", 889, 79);
         break;
       case "separationTriggerCleared":
-        this.updateDialogText("Separation cleared!", "30px", 900, 75);
+        this.updateDialogText("Still alive? After this?", "20px", 890, 77);
         break;
       case "dropdownTriggerCleared":
-        this.updateDialogText("Dropdown cleared!", "30px", 900, 75);
+        this.updateDialogText("NOT an easy jump!", "22px", 891, 76);
         break;
       case "falldownTriggerCleared":
-        this.updateDialogText("Falldown cleared!", "30px", 900, 75);
+        this.updateDialogText("It is almost over!", "24px", 896, 77);
         break;
       case "skyrocketTriggerCleared":
-        this.updateDialogText("Skyrocket cleared!", "30px", 900, 75);
+        this.updateDialogText("Congratulations?", "24px", 892, 78);
         break;
       case "textTriggerCleared":
-        this.updateDialogText("Text cleared!", "30px", 6020, 250);
+        this.updateDialogText("Congratulations!", "25px", 6010, 250);
         break;
     }
   }
