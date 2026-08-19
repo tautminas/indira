@@ -95,6 +95,16 @@ export class Game extends Scene {
     this.createDeathZone(this.player);
     this.createDogDisplay(this.player);
     this.setupFollowupCameraOn(this.player);
+
+    this.finishText = this.add
+      .text(6320, 233, "FINISH", {
+        fontSize: this.dialogTextFontSize,
+        color: "#080c1a",
+        fontFamily: "Fredoka-SemiBold",
+      })
+      .setDepth(2)
+      .setOrigin(0.5);
+    this.gameWon = false;
   }
 
   update() {
@@ -201,6 +211,7 @@ export class Game extends Scene {
   }
 
   handleTrapCollision() {
+    if (this.gameWon) return;
     this.lives--;
     localStorage.setItem("lives", this.lives);
     if (!this.isGameOver()) {
@@ -247,11 +258,32 @@ export class Game extends Scene {
     const endOfLevel = this.physics.add
       .sprite(end.x, end.y, "end")
       .setAlpha(0)
-      .setSize(5, 200)
+      .setSize(50, 300)
       .setOrigin(0.5, 1);
     const eolOverlap = this.physics.add.overlap(player, endOfLevel, () => {
       eolOverlap.active = false;
-      console.log("Payer has won!");
+      this.gameWon = true;
+      this.tweens.add({
+        targets: this.finishText,
+        scaleX: 1.1,
+        scaleY: 1.1,
+        duration: 400,
+        yoyo: true,
+        repeat: 1,
+        ease: "Power2.inOut",
+        onComplete: () => {
+          this.tweens.add({
+            targets: this.finishText,
+            alpha: 0,
+            duration: 400,
+            ease: "Quad.easeOut",
+            onComplete: () => {
+              // this.scene.start("NextScene");
+              console.log("Game completed! Transition to the next scene.");
+            },
+          });
+        },
+      });
     });
   }
 
