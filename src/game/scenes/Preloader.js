@@ -25,7 +25,7 @@ export class Preloader extends Scene {
     this.load.image("heart", "heart.png");
     this.load.image("heartbreak", "heartbreak.png");
     this.load.spritesheet("player", "player.png", {
-      frameWidth: 734,
+      frameWidth: 735,
       frameHeight: 504,
       spacing: 0,
     });
