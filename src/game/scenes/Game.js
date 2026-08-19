@@ -278,7 +278,7 @@ export class Game extends Scene {
             duration: 400,
             ease: "Quad.easeOut",
             onComplete: () => {
-              // this.scene.start("NextScene");
+              // this.scene.start("GameVictory");
               console.log("Game completed! Transition to the next scene.");
             },
           });

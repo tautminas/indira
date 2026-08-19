@@ -2,6 +2,7 @@ import { Boot } from "./scenes/Boot";
 import { Game as MainGame } from "./scenes/Game";
 import { GameOver } from "./scenes/GameOver";
 import { GameStart } from "./scenes/GameStart";
+import { GameVictory } from "./scenes/GameVictory";
 import { Credits } from "./scenes/Credits";
 import { Info } from "./scenes/Info";
 import { MainMenu } from "./scenes/MainMenu";
@@ -22,7 +23,7 @@ const config = {
     default: "arcade",
     arcade: {
       // gravity: { y: 300 },
-      debug: true,
+      // debug: true,
     },
   },
   scene: [
@@ -34,6 +35,7 @@ const config = {
     GameStart,
     MainGame,
     GameOver,
+    GameVictory,
   ],
 };
 
