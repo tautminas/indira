@@ -11,21 +11,31 @@ export class MainMenu extends Scene {
   create() {
     this.menuItems = [];
     this.selectedIndex = 0;
-    this.add.image(620, 220, "logo");
+    this.add.image(0, 0, "background").setOrigin(0, 0).setScale(0.5);
+    this.add.image(this.scale.width / 2, 160, "cat").setScale(0.4);
+    this.add
+      .text(this.scale.width / 2, 350, "Indira", {
+        fontFamily: "Fredoka-Bold",
+        fontSize: "145px",
+        color: "#ffbe2c",
+        stroke: "#ffa214",
+        strokeThickness: 1,
+      })
+      .setOrigin(0.5);
 
     const style = {
-      fontFamily: "Arial Black",
+      fontFamily: "Fredoka-SemiBold",
       fontSize: "32px",
       color: "#ffffff",
-      stroke: "#000000",
+      stroke: "#2f0c1d",
       strokeThickness: 6,
     };
 
     const hoverStyle = {
-      fontFamily: "Arial Black",
+      fontFamily: "Fredoka-SemiBold",
       fontSize: "32px",
-      color: "#ffff00",
-      stroke: "#000000",
+      color: "#eee98a",
+      stroke: "#2f0c1d",
       strokeThickness: 6,
     };
 
@@ -64,12 +74,17 @@ export class MainMenu extends Scene {
       },
     ];
 
-    const startY = 360;
+    const startY = 470;
     const spacing = 60;
 
     options.forEach((option, index) => {
       const button = this.add
-        .text(620, startY + index * spacing, option.text, style)
+        .text(
+          this.scale.width / 2,
+          startY + index * spacing,
+          option.text,
+          style,
+        )
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true });
 

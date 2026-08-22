@@ -19,7 +19,7 @@ export class Preloader extends Scene {
     this.load.image("logo", "logo.png");
     this.load.image("tileset", "tileset.png");
     this.load.tilemapTiledJSON("map", "map.tmj");
-    this.load.image("cat", "cat.png");
+    this.load.image("cat", "cats/cat.png");
     this.load.image("dog", "dog.png");
     this.load.image("dialog", "dialog.png");
     this.load.image("heart", "heart.png");
@@ -37,9 +37,10 @@ export class Preloader extends Scene {
       "Fredoka-SemiBold",
       "fonts/Fredoka/static/Fredoka-SemiBold.ttf",
     );
+    this.load.font("Fredoka-Bold", "fonts/Fredoka/static/Fredoka-Bold.ttf");
   }
 
   create() {
-    this.scene.start("Game");
+    this.scene.start("MainMenu");
   }
 }
