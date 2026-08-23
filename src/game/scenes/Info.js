@@ -107,6 +107,16 @@ export class Info extends Scene {
     this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
       this.scene.start("MainMenu");
     });
+
+    this.input.keyboard.once("keyup-ENTER", () => {
+      this.input.keyboard.once("keydown-ENTER", () => {
+        this.scene.start("MainMenu");
+      });
+    });
+
+    this.input.keyboard.once("keydown-ESC", () => {
+      this.scene.start("MainMenu");
+    });
   }
 
   createRoundedButton(x, y, text, callback) {
