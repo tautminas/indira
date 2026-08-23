@@ -11,7 +11,18 @@ export class MainMenu extends Scene {
   create() {
     this.menuItems = [];
     this.selectedIndex = 0;
-    this.add.image(0, 0, "background").setOrigin(0, 0).setScale(0.5);
+
+    this.backgroundScale = 0.5;
+    this.background1 = this.add
+      .image(0, 0, "background")
+      .setOrigin(0, 0)
+      .setScale(this.backgroundScale);
+    this.background2 = this.add
+      .image(this.background1.displayWidth, 0, "background")
+      .setOrigin(0, 0)
+      .setScale(this.backgroundScale);
+    this.scrollSpeed = 20;
+
     this.add.image(this.scale.width / 2, 160, "cat").setScale(0.4);
     this.add
       .text(this.scale.width / 2, 350, "Indira", {
@@ -156,6 +167,23 @@ export class MainMenu extends Scene {
     this.hoverStyle = hoverStyle;
 
     this.updateSelection();
+  }
+
+  update(time, delta) {
+    const movement = this.scrollSpeed * (delta / 1000);
+
+    this.background1.x -= movement;
+    this.background2.x -= movement;
+
+    const width = this.background1.displayWidth;
+
+    if (this.background1.x <= -width) {
+      this.background1.x = this.background2.x + width;
+    }
+
+    if (this.background2.x <= -width) {
+      this.background2.x = this.background1.x + width;
+    }
   }
 
   updateSelection() {
