@@ -6,32 +6,90 @@ export class GameOver extends Scene {
   }
 
   create() {
-    this.cameras.main.setBackgroundColor(0xff0000);
+    this.add.image(0, 0, "background").setOrigin(0, 0).setScale(0.5);
 
-    this.add.image(730, 300, "dog").setScale(0.25).setScrollFactor(0, 0);
-    this.add.image(500, 300, "dialog").setScale(0.25).setScrollFactor(0, 0);
-    this.dialogText = this.add
-      .text(410, 280, "You died!", {
-        fontSize: "30px",
-        color: "#ffffff",
-        fontFamily: "Arial",
-      })
-      .setScrollFactor(0, 0);
+    this.add
+      .rectangle(0, 0, this.scale.width, this.scale.height, 0xffffff, 0.1)
+      .setOrigin(0, 0);
+
     this.add
       .text(
+        this.scale.width / 2,
         150,
-        600,
-        "You lost you 9 cat lives. You will never get a change to play this game again!\nUnless you know how to open different browser or delete local storage. But you don't, do you?",
+        "Game Over! You have lost all your lives.",
         {
-          fontSize: "20px",
-          color: "#ffffff",
-          fontFamily: "Arial",
+          fontFamily: "Fredoka-SemiBold",
+          fontSize: "30px",
+          color: "#ffbe2c",
+          stroke: "#2f0c1d",
+          strokeThickness: 4,
         },
       )
-      .setScrollFactor(0, 0);
+      .setOrigin(0.5);
 
-    this.input.once("pointerdown", () => {
-      this.scene.start("Game");
+    this.input.keyboard.on("keydown-ESC", () => {
+      this.scene.start("MainMenu");
     });
+
+    this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
+      this.scene.start("MainMenu");
+    });
+
+    this.input.keyboard.once("keyup-ENTER", () => {
+      this.input.keyboard.once("keydown-ENTER", () => {
+        this.scene.start("MainMenu");
+      });
+    });
+
+    this.input.keyboard.once("keydown-ESC", () => {
+      this.scene.start("MainMenu");
+    });
+  }
+
+  createRoundedButton(x, y, text, callback) {
+    const buttonText = this.add
+      .text(0, 0, text, {
+        fontSize: "28px",
+        fontFamily: "Fredoka-Bold",
+        color: "#ffffff",
+      })
+      .setOrigin(0.5);
+
+    const paddingX = 16;
+    const paddingY = 10;
+    const radius = 12;
+
+    const width = buttonText.width + paddingX * 2;
+    const height = buttonText.height + paddingY * 2;
+
+    const buttonBg = this.add.graphics();
+
+    buttonBg.fillStyle(0x080c1a, 1);
+    buttonBg.fillRoundedRect(-width / 2, -height / 2, width, height, radius);
+
+    const button = this.add.container(x, y, [buttonBg, buttonText]);
+
+    button.setSize(width, height);
+    button.setInteractive({
+      useHandCursor: true,
+    });
+
+    button.on("pointerover", () => {
+      buttonBg.clear();
+      buttonBg.fillStyle(0x4a193a, 1);
+      buttonBg.fillRoundedRect(-width / 2, -height / 2, width, height, radius);
+      buttonText.setColor("#ffffff");
+    });
+
+    button.on("pointerout", () => {
+      buttonBg.clear();
+      buttonBg.fillStyle(0x080c1a, 1);
+      buttonBg.fillRoundedRect(-width / 2, -height / 2, width, height, radius);
+      buttonText.setColor("#ffffff");
+    });
+
+    button.on("pointerdown", callback);
+
+    return button;
   }
 }
