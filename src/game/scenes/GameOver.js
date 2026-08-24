@@ -27,23 +27,23 @@ export class GameOver extends Scene {
       )
       .setOrigin(0.5);
 
-    this.input.keyboard.on("keydown-ESC", () => {
-      this.scene.start("MainMenu");
-    });
-
     this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
       this.scene.start("MainMenu");
     });
 
-    this.input.keyboard.once("keyup-ENTER", () => {
-      this.input.keyboard.once("keydown-ENTER", () => {
-        this.scene.start("MainMenu");
-      });
-    });
-
-    this.input.keyboard.once("keydown-ESC", () => {
+    const enterHandler = (event) => {
+      if (event.repeat) return;
+      this.input.keyboard.off("keydown-ENTER", enterHandler);
       this.scene.start("MainMenu");
-    });
+    };
+    this.input.keyboard.on("keydown-ENTER", enterHandler);
+
+    const escHandler = (event) => {
+      if (event.repeat) return;
+      this.input.keyboard.off("keydown-ESC", escHandler);
+      this.scene.start("MainMenu");
+    };
+    this.input.keyboard.on("keydown-ESC", escHandler);
   }
 
   createRoundedButton(x, y, text, callback) {
