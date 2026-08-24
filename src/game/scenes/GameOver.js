@@ -6,7 +6,16 @@ export class GameOver extends Scene {
   }
 
   create() {
-    this.add.image(0, 0, "background").setOrigin(0, 0).setScale(0.5);
+    this.backgroundScale = 0.5;
+    this.pushAmount = Phaser.Math.Between(0, this.scale.width);
+    this.background1 = this.add
+      .image(-this.pushAmount, 0, "background")
+      .setOrigin(0, 0)
+      .setScale(this.backgroundScale);
+    this.background2 = this.add
+      .image(this.background1.displayWidth - this.pushAmount, 0, "background")
+      .setOrigin(0, 0)
+      .setScale(this.backgroundScale);
 
     this.add
       .rectangle(0, 0, this.scale.width, this.scale.height, 0xffffff, 0.1)
