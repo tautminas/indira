@@ -72,34 +72,6 @@ export class Info extends Scene {
       )
       .setOrigin(0.5);
 
-    const backButton = this.add
-      .text(this.scale.width / 2, 550, "Back to Menu", {
-        fontSize: "28px",
-        fontFamily: "Fredoka-Bold",
-        color: "#ffffff",
-        backgroundColor: "#2f0c1d",
-        padding: {
-          left: 12,
-          right: 12,
-          top: 8,
-          bottom: 8,
-        },
-      })
-      .setOrigin(0.5)
-      .setInteractive({ useHandCursor: true });
-
-    backButton.on("pointerover", () => {
-      backButton.setStyle({ backgroundColor: "#694f62", color: "#ffffff" });
-    });
-
-    backButton.on("pointerout", () => {
-      backButton.setStyle({ backgroundColor: "#2f0c1d", color: "#ffffff" });
-    });
-
-    backButton.on("pointerdown", () => {
-      this.scene.start("MainMenu");
-    });
-
     this.input.keyboard.on("keydown-ESC", () => {
       this.scene.start("MainMenu");
     });
