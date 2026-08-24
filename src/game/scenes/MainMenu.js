@@ -56,9 +56,7 @@ export class MainMenu extends Scene {
         action: () => {
           const lives = parseInt(localStorage.getItem("lives")) || 9;
 
-          if (lives === 9) {
-            this.scene.start("GameStart");
-          } else if (lives <= 0) {
+          if (lives <= 0) {
             this.scene.start("GameOver");
           } else {
             this.scene.start("Game");

@@ -1,7 +1,6 @@
 import { Boot } from "./scenes/Boot";
 import { Game as MainGame } from "./scenes/Game";
 import { GameOver } from "./scenes/GameOver";
-import { GameStart } from "./scenes/GameStart";
 import { GameVictory } from "./scenes/GameVictory";
 import { Credits } from "./scenes/Credits";
 import { Info } from "./scenes/Info";
@@ -32,7 +31,6 @@ const config = {
     MainMenu,
     Info,
     Credits,
-    GameStart,
     MainGame,
     GameOver,
     GameVictory,
