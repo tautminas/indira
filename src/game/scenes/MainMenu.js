@@ -9,8 +9,13 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    this.music = this.sound.add("soundtrack", { loop: true, volume: 0.5 });
-    this.music.play();
+    this.music = this.sound.get("soundtrack");
+    if (!this.music) {
+      this.music = this.sound.add("soundtrack", { loop: true, volume: 0.5 });
+    }
+    if (!this.music.isPlaying) {
+      this.music.play();
+    }
 
     this.menuItems = [];
     this.selectedIndex = 0;
