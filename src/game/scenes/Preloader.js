@@ -29,6 +29,7 @@ export class Preloader extends Scene {
       frameHeight: 504,
       spacing: 0,
     });
+    this.load.audio("soundtrack", "soundtrack.mp3");
     this.load.font(
       "Fredoka-Regular",
       "fonts/Fredoka/static/Fredoka-Regular.ttf",

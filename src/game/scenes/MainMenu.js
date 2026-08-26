@@ -9,6 +9,9 @@ export class MainMenu extends Scene {
   }
 
   create() {
+    this.music = this.sound.add("soundtrack", { loop: true, volume: 0.5 });
+    this.music.play();
+
     this.menuItems = [];
     this.selectedIndex = 0;
 
