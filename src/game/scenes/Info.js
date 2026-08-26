@@ -24,7 +24,7 @@ export class Info extends Scene {
     this.add
       .text(
         this.scale.width / 2,
-        150,
+        this.scale.height / 2 - 150,
         "You are a cat named Indira with nine lives. Nine and no more.",
         {
           fontFamily: "Fredoka-SemiBold",
@@ -39,8 +39,8 @@ export class Info extends Scene {
     this.add
       .text(
         this.scale.width / 2,
-        250,
-        "Angry dog created tricky obstacle course. Can you beat it?",
+        this.scale.height / 2 - 50,
+        "Angry dog created a tricky obstacle course. Can you beat it?",
         {
           fontFamily: "Fredoka-SemiBold",
           fontSize: "30px",
@@ -54,7 +54,7 @@ export class Info extends Scene {
     this.add
       .text(
         this.scale.width / 2,
-        350,
+        this.scale.height / 2 + 50,
         "You control Indira with arrow keys: left, right, up.",
         {
           fontFamily: "Fredoka-SemiBold",
@@ -69,8 +69,8 @@ export class Info extends Scene {
     this.add
       .text(
         this.scale.width / 2,
-        450,
-        "It is rage bait game, good luck controling Indira and your emotions!",
+        this.scale.height / 2 + 150,
+        "It is a rage bait game good luck controlling Indira and your emotions!",
         {
           fontFamily: "Fredoka-SemiBold",
           fontSize: "30px",
@@ -81,9 +81,14 @@ export class Info extends Scene {
       )
       .setOrigin(0.5);
 
-    this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
-      this.scene.start("MainMenu");
-    });
+    this.createRoundedButton(
+      this.scale.width / 2,
+      this.scale.height / 2 + 255,
+      "Back to menu",
+      () => {
+        this.scene.start("MainMenu");
+      },
+    );
 
     const enterHandler = (event) => {
       if (event.repeat) return;

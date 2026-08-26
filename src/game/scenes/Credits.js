@@ -22,20 +22,10 @@ export class Credits extends Scene {
       .setOrigin(0, 0);
 
     this.add
-      .text(this.scale.width / 2, 150, "Game created by Tautminas Cibulskis", {
-        fontFamily: "Fredoka-SemiBold",
-        fontSize: "30px",
-        color: "#ffbe2c",
-        stroke: "#2f0c1d",
-        strokeThickness: 4,
-      })
-      .setOrigin(0.5);
-
-    this.add
       .text(
         this.scale.width / 2,
-        250,
-        "Tools used: Phaser, Tiled, Inkscape, 1bitdragon",
+        this.scale.height / 2 - 150,
+        "Created by Tautminas Cibulskis",
         {
           fontFamily: "Fredoka-SemiBold",
           fontSize: "30px",
@@ -47,20 +37,10 @@ export class Credits extends Scene {
       .setOrigin(0.5);
 
     this.add
-      .text(this.scale.width / 2, 350, "Used assets: Fredoka font", {
-        fontFamily: "Fredoka-SemiBold",
-        fontSize: "30px",
-        color: "#ffbe2c",
-        stroke: "#2f0c1d",
-        strokeThickness: 4,
-      })
-      .setOrigin(0.5);
-
-    this.add
       .text(
         this.scale.width / 2,
-        450,
-        "Special thanks to Povilas and Aistė on behalf of Indira",
+        this.scale.height / 2 - 50,
+        "Made with: Phaser, Tiled, Inkscape, 1bitdragon",
         {
           fontFamily: "Fredoka-SemiBold",
           fontSize: "30px",
@@ -71,9 +51,44 @@ export class Credits extends Scene {
       )
       .setOrigin(0.5);
 
-    this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
-      this.scene.start("MainMenu");
-    });
+    this.add
+      .text(
+        this.scale.width / 2,
+        this.scale.height / 2 + 50,
+        "Assets: Fredoka font, Smoothy Palette (Lospec)",
+        {
+          fontFamily: "Fredoka-SemiBold",
+          fontSize: "30px",
+          color: "#ffbe2c",
+          stroke: "#2f0c1d",
+          strokeThickness: 4,
+        },
+      )
+      .setOrigin(0.5);
+
+    this.add
+      .text(
+        this.scale.width / 2,
+        this.scale.height / 2 + 150,
+        "Special thanks to Povilas and Aistė, on behalf of Indira",
+        {
+          fontFamily: "Fredoka-SemiBold",
+          fontSize: "30px",
+          color: "#ffbe2c",
+          stroke: "#2f0c1d",
+          strokeThickness: 4,
+        },
+      )
+      .setOrigin(0.5);
+
+    this.createRoundedButton(
+      this.scale.width / 2,
+      this.scale.height / 2 + 255,
+      "Back to menu",
+      () => {
+        this.scene.start("MainMenu");
+      },
+    );
 
     const enterHandler = (event) => {
       if (event.repeat) return;

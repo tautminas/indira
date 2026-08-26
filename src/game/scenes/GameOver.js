@@ -39,7 +39,7 @@ export class GameOver extends Scene {
     this.createRoundedButton(
       this.scale.width / 2,
       (this.scale.height * 3) / 4,
-      "Back to Menu",
+      "Back to menu",
       () => {
         this.scene.start("MainMenu");
       },
