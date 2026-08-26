@@ -18,22 +18,32 @@ export class GameVictory extends Scene {
       .setScale(this.backgroundScale);
 
     this.add
-      .rectangle(0, 0, this.scale.width, this.scale.height, 0xffffff, 0.1)
+      .rectangle(0, 0, this.scale.width, this.scale.height, 0x5da75d, 0.3)
       .setOrigin(0, 0);
 
     this.add
-      .text(this.scale.width / 2, 150, "You won!", {
-        fontFamily: "Fredoka-SemiBold",
-        fontSize: "30px",
-        color: "#ffbe2c",
-        stroke: "#2f0c1d",
-        strokeThickness: 4,
-      })
+      .text(
+        this.scale.width / 2,
+        this.scale.height / 2,
+        "You made it through the obstacle course! Want to go one more time?",
+        {
+          fontFamily: "Fredoka-SemiBold",
+          fontSize: "35px",
+          color: "#ffbe2c",
+          stroke: "#2f0c1d",
+          strokeThickness: 4,
+        },
+      )
       .setOrigin(0.5);
 
-    this.createRoundedButton(this.scale.width / 2, 550, "Back to Menu", () => {
-      this.scene.start("MainMenu");
-    });
+    this.createRoundedButton(
+      this.scale.width / 2,
+      (this.scale.height * 3) / 4,
+      "Back to Menu",
+      () => {
+        this.scene.start("MainMenu");
+      },
+    );
 
     const enterHandler = (event) => {
       if (event.repeat) return;
