@@ -20,6 +20,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.playerSpeed = 350;
     this.jumpSpeed = 750;
     this.cursors = this.scene.input.keyboard.createCursorKeys();
+    this.escKey = this.scene.input.keyboard.addKey(
+      Phaser.Input.Keyboard.KeyCodes.ESC,
+    );
 
     this.body.setGravityY(this.gravity);
     this.setCollideWorldBounds(true);
@@ -35,6 +38,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     const { left, right, space, up } = this.cursors;
     const onFloor = this.body.onFloor();
+
+    if (Phaser.Input.Keyboard.JustDown(this.escKey) && onFloor) {
+      this.scene.scene.start("MainMenu");
+      return;
+    }
 
     if (left.isDown) {
       this.setVelocityX(-this.playerSpeed);

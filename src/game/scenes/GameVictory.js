@@ -18,7 +18,7 @@ export class GameVictory extends Scene {
       .setScale(this.backgroundScale);
 
     this.add
-      .rectangle(0, 0, this.scale.width, this.scale.height, 0x5da75d, 0.3)
+      .rectangle(0, 0, this.scale.width, this.scale.height, 0x5da75d, 0.2)
       .setOrigin(0, 0);
 
     this.add
