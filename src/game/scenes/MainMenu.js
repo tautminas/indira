@@ -62,7 +62,11 @@ export class MainMenu extends Scene {
       {
         text: "Play",
         action: () => {
-          const lives = parseInt(localStorage.getItem("lives")) || 9;
+          const lives = Phaser.Math.Clamp(
+            parseInt(localStorage.getItem("lives")) || 9,
+            0,
+            9,
+          );
 
           if (lives <= 0) {
             this.scene.start("GameOver");

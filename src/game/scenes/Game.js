@@ -61,7 +61,11 @@ export class Game extends Scene {
     this.falldown3Trap.setCollisionByExclusion(-1, true);
     this.skyrocketTrap.setCollisionByExclusion(-1, true);
 
-    this.lives = parseInt(localStorage.getItem("lives")) || 9;
+    this.lives = Phaser.Math.Clamp(
+      parseInt(localStorage.getItem("lives")) || 9,
+      0,
+      9,
+    );
     this.isGameOver();
     this.createLivesDisplay();
 
