@@ -63,7 +63,7 @@ export class MainMenu extends Scene {
         text: "Play",
         action: () => {
           const lives = Phaser.Math.Clamp(
-            parseInt(localStorage.getItem("lives")) || 9,
+            parseInt(localStorage.getItem("lives")) ?? 9,
             0,
             9,
           );

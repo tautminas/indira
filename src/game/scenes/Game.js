@@ -62,7 +62,7 @@ export class Game extends Scene {
     this.skyrocketTrap.setCollisionByExclusion(-1, true);
 
     this.lives = Phaser.Math.Clamp(
-      parseInt(localStorage.getItem("lives")) || 9,
+      parseInt(localStorage.getItem("lives")) ?? 9,
       0,
       9,
     );
