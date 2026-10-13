@@ -12,6 +12,18 @@ export class Boot extends Scene {
   }
 
   create() {
+    this.initLives();
     this.scene.start("Preloader");
+  }
+
+  initLives() {
+    try {
+      const stored = parseInt(localStorage.getItem("lives"), 10);
+      if (Number.isNaN(stored)) {
+        localStorage.setItem("lives", 9);
+      }
+    } catch (e) {
+      // storage blocked
+    }
   }
 }
